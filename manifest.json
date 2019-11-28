@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "oyd-browsing-plugin",
+  "version": "0.1.0",
+  "description": "Collects your browsing data and stores it in our OYD data vault.",
+  "background": {
+    "scripts": [
+      "dist/main.js"
+    ]
+  },
+  "permissions": [
+    "storage",
+    "webNavigation"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true,
+    "chrome_style": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "oyd.browsing@unterholzer.dev"
+    }
+  }
+}

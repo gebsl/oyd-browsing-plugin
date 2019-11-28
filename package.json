@@ -1,0 +1,15 @@
+{
+  "name": "oyd-browsing-plugin",
+  "version": "0.1.0",
+  "description": "",
+  "author": "gebsl",
+  "license": "ISC",
+  "scripts": {
+    "dev": "npx webpack --watch --mode development",
+    "build": "npx webpack --mode production"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
