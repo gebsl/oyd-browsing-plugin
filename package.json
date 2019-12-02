@@ -6,9 +6,10 @@
   "license": "ISC",
   "scripts": {
     "dev": "npx webpack --watch --mode development",
-    "build": "npx webpack --mode production"
+    "build": "npx webpack --mode production && npx web-ext build -o -i 'src/*'"
   },
   "devDependencies": {
+    "web-ext": "^3.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }
