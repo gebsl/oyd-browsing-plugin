@@ -13,6 +13,9 @@ This webbrowser plugin enables collecting data from your browser, saving it in y
   * Chrome: https://developer.chrome.com/extensions/getstarted#manifest (without the need of creating a manifest.json file, as it already exists in this repo)
 * Configure the data vault url, app key, app secret and sublist (optional) within the extension options/preferences
 
+npm-version used: 6.10.13 \
+node-version used: 8.10.0
+
 ## Preferences/Options
 
 ### Data Vault URL
