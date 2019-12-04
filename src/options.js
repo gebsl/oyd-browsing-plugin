@@ -1,4 +1,4 @@
-import { ensureBrowserCompatibility } from "./utils/compatibility";
+import { ensureBrowserCompatibility, getSyncStorage } from "./utils/compatibility";
 import { DATA_VAULT_URL, APP_KEY, APP_SECRET, SUBLIST } from "./constants/storageConstants";
 import { OydCommunicator } from "./utils/oyd-communicator";
 import { REPO_URI } from "./constants/global";
@@ -42,7 +42,7 @@ function saveOptions(e) {
 }
 
 async function restoreOptions() {
-  const promise = browser.storage.sync.get(Object.keys(options));
+  const promise = getSyncStorage(Object.keys(options));
   promise.then(res => {
     Object.keys(res).forEach(prop => {
       options[prop].value = res[prop] || '';
