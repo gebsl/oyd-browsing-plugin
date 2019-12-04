@@ -29,3 +29,13 @@ browser.webNavigation.onCompleted.addListener((details) => {
 
 tryInitializeCommunicator();
 browser.storage.onChanged.addListener(() => tryInitializeCommunicator());
+
+function openOptions() {
+  browser.runtime.openOptionsPage();
+}
+
+browser.browserAction.onClicked.addListener(openOptions);
+browser.runtime.onInstalled.addListener((details) => {
+  if (details.reason === browser.runtime.OnInstalledReason.INSTALL)
+    openOptions();
+})
