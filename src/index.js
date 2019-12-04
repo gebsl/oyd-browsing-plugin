@@ -23,6 +23,7 @@ browser.webNavigation.onCompleted.addListener((details) => {
   communicator.sendData({
     url: details.url,
     timeStamp: details.timeStamp,
+    userAgent: navigator.userAgent,
     type: NAVIGATION,
   });
 });
