@@ -26,7 +26,7 @@ async function checkValidity(data) {
   validityElement.textContent =
     isValid ?
       'Everything ok :)' :
-      'Your input seems to be invalid :(';
+      'Your input seems to be invalid. No data will be tracked :(';
 }
 
 function saveOptions(e) {
