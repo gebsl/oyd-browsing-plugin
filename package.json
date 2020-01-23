@@ -1,9 +1,9 @@
 {
   "name": "oyd-browsing-plugin",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "",
   "author": "gebsl",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "dev": "npx webpack --watch --mode development",
     "build": "npx webpack --mode production && npx web-ext build -o -i 'src/*'"

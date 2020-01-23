@@ -76,6 +76,8 @@ export class OydCommunicator {
     // TODO: Check if token is still valid
     const token = await this.authorize();
     // TODO: Error handling -> e.g. unauthorized
+
+    // TODO: There is a http 400, if something is wrong with the token
     xhr(`${this.url}/api/repos/${getRepoPath(this.repo, this.sublist)}/items`, POST, getDataHeaders(token), JSON.stringify(data));
   }
 }

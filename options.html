@@ -9,56 +9,78 @@
 <body>
   <h1>OwnYourData Browsing Plugin</h1>
   <p>
-    Please install the Browsing extension in your OYD data vault. If the plugin is not available, install it through
-    this manifest: <a
-      href="https://github.com/gebsl/oyd-browsing-plugin/blob/master/oyd-plugin-manifest.json">https://github.com/gebsl/oyd-browsing-plugin/blob/master/oyd-plugin-manifest.json</a>
+    Please install the Browsing extension in your OYD data vault.<br>
+    If the plugin is not available, install it through this manifest:
+    <br> <a href="https://github.com/gebsl/oyd-browsing-plugin/blob/master/oyd-plugin-manifest_en.json">Manifest
+      (English)</a>
+    <br> <a href="https://github.com/gebsl/oyd-browsing-plugin/blob/master/oyd-plugin-manifest_de.json">Manifest
+      (German/Deutsch)</a>
   </p>
 
   <hr>
 
-  <h2>Settings</h2>
-  <form>
-    <p>
-      <label for="txtDataVaultUrl">Data Valut URL:</label>
-      <input id="txtDataVaultUrl" type="url" />
-    </p>
-    <p>
-      <label for="txtAppKey">App Key:</label>
-      <input id="txtAppKey" type="text" />
-    </p>
-    <p>
-      <label for="txtAppSecret">App Secret:</label>
-      <input id="txtAppSecret" type="password">
-    </p>
-    <p>
-      <label for="txtSublist">Sublist:</label>
-      <input id="txtSublist" type="text" />
-    </p>
-    <button type="submit">Save</button>
-    <p>Status: <span id="validity"></span></p>
-  </form>
+  <article>
+    <h2>Settings/Installation</h2>
+    <p>You can use an installation code (6 digits), provided by your data vault, to start collecting browsing data.</p>
 
-  <hr>
+    <form id="formInstall">
+      <p>
+        <label for="txtInstallCode">Installation code:</label>
+        <input id="txtInstallCode" type="text" inputmode="numeric" maxlength="6" minlength="6" required />
+      </p>
+      <p>Status: <span id="status"></span></p>
 
-  <h2>Explanation</h2>
-  <h3>Data Vault URL</h3>
-  <p>
-    The url to your data vault (e.g. https://data-vault.eu)
-  </p>
-  <h3>App Key and App Secret</h3>
-  <p>
-    In your data vault, click on your username, then on "Plugins". Find the Browsing-Plugin and click on "edit".
-    <br>
-    The field "Identifier" contains your app key.
-    <br>
-    The field "Secret" contains your app secret.
-    <br>
-    Both are necessary to successfully authenticate against your data vault.
-  </p>
-  <h3>Sublist (optional)</h3>
-  <p>
-    This key can optionally be used to create a separate (named) data list within your data vault.
-  </p>
+      <button type="submit">Save</button>
+      <button id="btnAdvancedSettings" type="button">Toggle Advanced Settings</button>
+    </form>
+
+    <div id="advancedSettingsPanel" hidden>
+      <h3>Advanced Settings</h3>
+      <form id="advancedSettings">
+        <p>
+          <label for="txtDataVaultUrl">Data Valut URL:</label>
+          <input id="txtDataVaultUrl" type="url" required />
+        </p>
+        <p>
+          <label for="txtAppKey">App Key:</label>
+          <input id="txtAppKey" type="text" required />
+        </p>
+        <p>
+          <label for="txtAppSecret">App Secret:</label>
+          <input id="txtAppSecret" type="password" required />
+        </p>
+        <p>
+          <label for="txtSublist">Sublist:</label>
+          <input id="txtSublist" type="text" />
+        </p>
+        <button type="submit">Save</button>
+      </form>
+
+      <hr>
+
+      <h3>Explanation</h3>
+      <h4>Data Vault URL</h4>
+      <p>
+        The url to your data vault (e.g. https://data-vault.eu)
+      </p>
+      <h4>App Key and App Secret</h4>
+      <p>
+        In your data vault, click on your username, then on "Plugins". Find the Browsing-Plugin and click on "edit".
+        <br>
+        The field "Identifier" contains your app key.
+        <br>
+        The field "Secret" contains your app secret.
+        <br>
+        Both are necessary to successfully authenticate against your data vault.
+      </p>
+      <h4>Sublist (optional)</h4>
+      <p>
+        This key can optionally be used to create a separate (named) data list within your data vault.
+      </p>
+
+    </div>
+  </article>
+
   <script src="dist/options.js"></script>
 </body>
 

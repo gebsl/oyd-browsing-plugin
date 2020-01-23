@@ -9,6 +9,7 @@ export async function xhr(url, type, headers, body) {
     req.setRequestHeader(key, headers[key]);
   }
 
+  // TODO: reject it somewhere?
   const promise = new Promise(resolve => {
     req.onreadystatechange = () => {
       if (req.readyState === XMLHttpRequest.DONE)
