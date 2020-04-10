@@ -10,10 +10,19 @@ export async function xhr(url, type, headers, body) {
   }
 
   // TODO: reject it somewhere?
-  const promise = new Promise(resolve => {
+  const promise = new Promise((resolve, reject) => {
     req.onreadystatechange = () => {
-      if (req.readyState === XMLHttpRequest.DONE)
-        resolve(req);
+      if (req.readyState === XMLHttpRequest.DONE) {
+        const {responseText} = req;
+        if (responseText) {
+          try {
+            const data = JSON.parse(responseText);
+            resolve(data);
+          }
+          catch { }
+        }
+        reject();
+      }
     }
   });
 

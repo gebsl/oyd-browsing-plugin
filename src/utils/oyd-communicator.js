@@ -1,4 +1,5 @@
-import { xhr, POST } from './networking';
+import { xhr, POST, GET } from './networking';
+import { encrypt } from './crypto';
 
 function getBasicHeaders() {
   return {
@@ -31,6 +32,18 @@ export class OydCommunicator {
     this.sublist = sublist;
   }
 
+  async initialize() {
+    const token = await this.authorize();
+    const headers = getBasicHeaders();
+    try {
+      const data = await xhr(`${this.url}/api/repos/${getRepoPath(this.repo, this.sublist)}/pub_key`, GET, getDataHeaders(token));
+      this.pubkey = data['public_key'];
+    }
+    catch { 
+      this.pubkey = undefined;
+    }
+  }
+
   async isValid() {
     try {
       // test if is valid url
@@ -49,25 +62,15 @@ export class OydCommunicator {
 
   async authorize() {
     const headers = getBasicHeaders();
-    const { responseText } = await xhr(`${this.url}/oauth/token`, POST, headers, JSON.stringify({
-      'client_id': this.appKey,
-      'client_secret': this.appSecret,
-      'grant_type': 'client_credentials'
-    }));
-
-    if (responseText) {
-      let data;
-
-      try {
-        data = JSON.parse(responseText);
-      }
-      catch (e) {
-        return null;
-      }
-
+    try {
+      const data = await xhr(`${this.url}/oauth/token`, POST, headers, JSON.stringify({
+        'client_id': this.appKey,
+        'client_secret': this.appSecret,
+        'grant_type': 'client_credentials'
+      }));
       return data['access_token'];
     }
-
+    catch { }
     return null;
   }
 
@@ -78,6 +81,7 @@ export class OydCommunicator {
     // TODO: Error handling -> e.g. unauthorized
 
     // TODO: There is a http 400, if something is wrong with the token
-    xhr(`${this.url}/api/repos/${getRepoPath(this.repo, this.sublist)}/items`, POST, getDataHeaders(token), JSON.stringify(data));
+    xhr(`${this.url}/api/repos/${getRepoPath(this.repo, this.sublist)}/items`, POST, getDataHeaders(token), 
+      JSON.stringify(encrypt(JSON.stringify(data), this.pubkey)));
   }
 }

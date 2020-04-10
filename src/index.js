@@ -10,7 +10,8 @@ let communicator = null;
 async function tryInitializeCommunicator() {
   const data = await getSyncStorage([DATA_VAULT_URL, APP_KEY, APP_SECRET, SUBLIST]);
   communicator = new OydCommunicator(data[DATA_VAULT_URL], REPO_URI, data[APP_KEY], data[APP_SECRET], data[SUBLIST]);
-
+  await communicator.initialize();
+  
   if (!(await communicator.isValid()))
     communicator = null;
 }
