@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "libsodium": "^0.7.6",
-    "libsodium-wrappers": "^0.7.6"
+    "libsodium-wrappers": "^0.7.6",
+    "vaultifier": "^0.1.10"
   }
 }

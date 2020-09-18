@@ -1,8 +1,8 @@
 import { ensureBrowserCompatibility, getSyncStorage } from "./utils/compatibility";
 import { DATA_VAULT_URL, APP_KEY, APP_SECRET, SUBLIST } from "./constants/storageConstants";
-import { OydCommunicator } from "./utils/oyd-communicator";
 import { REPO_URI } from "./constants/global";
-import { xhr, GET } from "./utils/networking";
+
+import { Vaultifier } from "vaultifier";
 
 ensureBrowserCompatibility();
 
@@ -27,12 +27,12 @@ async function checkValidity() {
   setStatus('Validating your input...');
 
   const dataVaultUrl = storage[DATA_VAULT_URL];
-  const isValid = await new OydCommunicator(
+  const isValid = await new Vaultifier(
     dataVaultUrl,
+    Vaultifier.getRepositoryPath(REPO_URI, storage[SUBLIST]),
     REPO_URI,
     storage[APP_KEY],
     storage[APP_SECRET],
-    storage[SUBLIST],
   ).isValid();
 
   setStatus(
@@ -66,14 +66,13 @@ async function doInstall() {
 
   const installCode = installCodeElement.value;
   const dataVaultUrl = storage[DATA_VAULT_URL];
-  const response = await xhr(`${dataVaultUrl}/api/install/${installCode}`, GET);
+  const credentials = await new Vaultifier(dataVaultUrl).resolveInstallCode(installCode);
 
-  const resObj = JSON.parse(response.responseText);
-  const { key, secret } = resObj;
+  const { appKey, appSecret } = credentials;
 
-  if (key && secret) {
-    await setStorageEntry(APP_KEY, key);
-    await setStorageEntry(APP_SECRET, secret);
+  if (appKey && appSecret) {
+    await setStorageEntry(APP_KEY, appKey);
+    await setStorageEntry(APP_SECRET, appSecret);
 
     await restoreUI();
     checkValidity();
