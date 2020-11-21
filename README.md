@@ -4,17 +4,17 @@ This webbrowser plugin enables collecting data from your browser, saving it in y
 
 ## Instructions
 
-* Register a OYD plugin in your OYD data vault, using the mainfest file `oyd-plugin-manifest.json`
+* Register a OYD plugin in your OYD data vault, using the mainfest file `oyd-plugin-manifest_en.json` or `oyd-plugin-manifest_de.json`
 * Clone or download this repository
 * Execute `npm install` to install all dependencies
-* Execute `npm build` to build a production version
+* Execute `npm run build` to build a production version
 * Install the browser extension according to one of these tutorials
   * Firefox: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#Installing
   * Chrome: https://developer.chrome.com/extensions/getstarted#manifest (without the need of creating a manifest.json file, as it already exists in this repo)
 * Configure the data vault url, app key, app secret and sublist (optional) within the extension options/preferences
 
-npm-version used: 6.10.13 \
-node-version used: 8.10.0
+npm-version used: 6.13.2 \
+node-version used: 12.13.1
 
 ## Preferences/Options
 
