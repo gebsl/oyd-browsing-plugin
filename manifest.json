@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "oyd-browsing-plugin",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Collects your browsing data and stores it in our OYD data vault.",
   "icons": {
     "48": "assets/app_logo_48.png",
