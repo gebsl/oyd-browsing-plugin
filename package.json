@@ -9,13 +9,11 @@
     "build": "npx webpack --mode production && npx web-ext build -o -i 'src/*'"
   },
   "devDependencies": {
-    "web-ext": "^3.2.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "web-ext": "^5.4.0",
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "libsodium": "^0.7.6",
-    "libsodium-wrappers": "^0.7.6",
     "vaultifier": "^0.1.10"
   }
 }
