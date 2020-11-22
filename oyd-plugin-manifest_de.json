@@ -2,7 +2,7 @@
   "name": "Webverlauf",
   "identifier": "dev.unterholzer.oyd.browsing",
   "language": "de",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Speichere deinen Webverlauf.",
   "installation": "Installiere auch die Browser-Erweiterung zum Datensammeln; verfügbar für <a href='https://chrome.google.com/webstore/detail/oyd-browsing-plugin/gkekljdocgjaihkpnkckddgddjepnoik'>Google Chrome</a>, <a href='https://addons.mozilla.org/de/firefox/addon/oyd-browsing-plugin/'>Mozilla Firefox</a> oder als <a href='https://github.com/gebsl/oyd-browsing-plugin'>Source Code</a>.<br>Verbinde nach der Installation die Browser-Erweiterung mit deinem Datentresor, indem du diesen Code eingibst:",
   "info_url": "",
