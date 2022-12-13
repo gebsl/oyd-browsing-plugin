@@ -9,7 +9,7 @@
     "build": "npx webpack --mode production && npx web-ext build -o -i 'src/*'"
   },
   "devDependencies": {
-    "web-ext": "^5.4.0",
+    "web-ext": "^7.4.0",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0"
   },
